@@ -1,0 +1,32 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Auto Summary</a>
+</nav>
+<div class="container">
+  <div class="alert alert-danger" *ngIf="extractError"> Unable to extract summary , please try later</div>
+  <div id="urlInputDiv" class="container">
+    <form class="form-inline" #urlForm="ngForm" (ngSubmit)="getSummary(urlForm)">
+      <div class="row" style="width: 103%;">
+        <div class="col-lg-12">
+          <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Enter URL</div>
+            </div>
+            <input type="text" ngModel #url="ngModel" name="url" class="form-control form-control-lg" id="inlineFormInputGroupUsername2" required>
+            <button type="submit" class="btn btn-info  btn-lg" [disabled]="urlForm.invalid">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <small id="passwordHelpInline" class="text-muted">
+      Please enter .pdf,.doc,.txt,.png,.jpeg urls
+    </small>
+  </div>
+  <div class="container" id="summaryContentDiv">
+      <div class="card">
+          <h5 class="card-header">Summary</h5>
+          <div class="card-body">
+            {{ summary }}
+          </div>
+        </div>
+  </div>
+</div>
